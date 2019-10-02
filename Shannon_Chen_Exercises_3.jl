@@ -32,4 +32,5 @@ function extract_rgb(img)
     g = el_cap[:, :, 2]
     b = el_cap[:, :, 3]
     return vcat(r, g, b)
+    println("reset with git reset --mixed")
 end
