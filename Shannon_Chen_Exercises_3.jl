@@ -34,3 +34,28 @@ function extract_rgb(img)
     return vcat(r, g, b)
     println("reset with git reset --mixed")
 end
+
+#c. buggy file was created
+
+# d. performed a git reset --mixed and added a println
+# Using git reset --mixed does not change the actual "buggy" file, but instead saves the changes into the working directory and shows it on a branch detached from HEAD.
+
+# e. Makes a new 360x640x3 matrix and sets the R, G, and B channels to it. This new image would be plotted next to the original image for comparison
+
+image2 = copy(el_capitan) # new 360x640x3 matrix representing the new image
+image2[:, :, 1] = el_capitan[:, :, 2] # sets image2[:, :, 1] as the G channel from the original image
+image2[:, :, 2] = el_capitan[:, :, 3] # sets image2[:, :, 2] as the B channel from the original image
+image2[:, :, 3] = el_capitan[:, :, 1] # sets image2[:, :, 3] as the R channel from the original image
+
+# creation of Figure_1
+# plots the original image on the left hand side
+subplot(1, 2, 1)
+imshow(el_capitan)
+title("Original Image")
+
+# plots new image on the right hand side
+subplot(1, 2, 2)
+imshow(image2)
+title("New Image")
+
+axis("off")
